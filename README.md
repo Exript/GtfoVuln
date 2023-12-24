@@ -1,10 +1,5 @@
 
 # GTFVuln
-
-[![GTFVuln Logo](https://raw.githubusercontent.com/Exript/GtfoVuln/main/assets/logo.png)](https://gtfobins.github.io/)
-
-GTFVuln is a simple tool that matches suid commands from the GTFobins website with local setuid and setgid files.
-
 ```
     ___________              .__        __    
     \_   _____/__  __________|__|______/  |_  
@@ -14,6 +9,11 @@ GTFVuln is a simple tool that matches suid commands from the GTFobins website wi
             \/      \/          |__|          
 ```
 
+
+GTFVuln is a simple tool that matches suid commands from the GTFobins website with local setuid and setgid files.
+
+
+[![GTFVuln Logo](https://raw.githubusercontent.com/Exript/GtfoVuln/main/assets/logo.png)](https://gtfobins.github.io/)
 ## Installation
 
 To run the project on your local machine, you can follow the steps below.
