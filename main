@@ -40,7 +40,7 @@ def get_links_from_table(url, table):
                 full_url = urljoin(url, link['href'].lstrip('/'))
                 result = f"{link_text.split('/')[-1]}={full_url}"
 
-                # Ek kontrol: Sadece #+suid içeren sayfadaki bağlantıları ekleyin
+                # Additional check: Only links on the page containing #+suid
                 if '#+suid' in full_url:
                     results.append(result)
 
@@ -82,7 +82,7 @@ def main():
     url = "https://gtfobins.github.io/"
     bin_links = scrape_bin_table(url)
 
-    if bin_links is not None and bin_links:  # bin_links boş değilse devam et
+    if bin_links is not None and bin_links:  
         setuid_setgid_files = find_setuid_setgid_files()
 
         if setuid_setgid_files:
@@ -92,7 +92,7 @@ def main():
             for file_path in setuid_setgid_files:
                 for link_info in bin_links:
                     bin_name, bin_url = link_info.split('=')
-                    # Tam eşleşme kontrolü
+                    # Exact match check
                     if bin_name == os.path.basename(file_path):
                         matches.append((bin_name, bin_url))
 
