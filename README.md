@@ -1,7 +1,7 @@
 # GTFVuln
 
 
-[![GTFVuln Logo](https://raw.githubusercontent.com/Exript/GtfoVuln/main/assets/logo.png)]([https://github.com/Exript](https://gtfobins.github.io/)
+[![GTFVuln Logo](https://raw.githubusercontent.com/Exript/GtfoVuln/main/assets/logo.png)](https://gtfobins.github.io/)
 
 GTFVuln is a simple tool that matches suid commands from the GTFobins website with local setuid and setgid files.
 
