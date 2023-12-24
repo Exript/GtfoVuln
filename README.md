@@ -1,5 +1,5 @@
+English
 # GTFVuln
-
 
 [![GTFVuln Logo](https://raw.githubusercontent.com/Exript/GtfoVuln/main/assets/logo.png)](https://gtfobins.github.io/)
 
@@ -27,6 +27,7 @@ python3 gtfvuln.py
 
 
 
+Turkish
 # GTFVuln
 
 https://github.com/Exript/GtfoVuln/assets/64208547/106e6c1f-0d68-42ae-b81b-9dc87061c079
