@@ -47,7 +47,7 @@ def get_links_from_table(url, table):
     return results
 
 def scrape_bin_table(url):
-    full_url = url + '#+suid'  # Url'i güncelliyoruz
+    full_url = url + '#+suid'  # We update the url
     soup = get_soup(full_url)
 
     if not soup:
