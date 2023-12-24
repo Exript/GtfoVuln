@@ -15,8 +15,6 @@ To run the project on your local machine, you can follow the steps below.
     pip install -r requirements.txt
     ```
 
-2. ...
-
 ## Usage
 
 To use the project, you can run the following command:
