@@ -29,4 +29,4 @@ To run the project on your local machine, you can follow the steps below.
 To use the project, you can run the following command:
 
 ```bash
-python3 gtfvuln.py
+python3 exript.py
