@@ -13,7 +13,7 @@
 GTFVuln is a simple tool that matches suid commands from the GTFobins website with local setuid and setgid files on Linux systems.
 
 
-[![GTFVuln Logo]](https://gtfobins.github.io/)
+[[GTFOBins]](https://gtfobins.github.io/)
 ## Installation
 
 To run the project on your local machine, you can follow the steps below.
