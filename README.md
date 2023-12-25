@@ -30,3 +30,9 @@ To use the project, you can run the following command:
 
 ```bash
 python3 exript.py
+```
+or 
+```bash
+chmod +x exrript.sh
+./exript.sh
+```
