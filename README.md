@@ -18,20 +18,10 @@ GTFVuln is a simple tool that matches suid commands from the GTFobins website wi
 
 To run the project on your local machine, you can follow the steps below.
 
-1. Install the necessary dependencies:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
 ## Usage
 
 To use the project, you can run the following command:
-
-```bash
-python3 exript.py
-```
-or 
+ 
 ```bash
 chmod +x exrript.sh
 ./exript.sh
