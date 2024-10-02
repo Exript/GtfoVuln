@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# ASCII header
 print_header() {
     ascii_art="
        ___________              .__        __    
@@ -17,18 +18,20 @@ get_links_from_table() {
     table=$2
     results=()
 
-    rows=$(echo "$table" | grep -o '<tr>.*</tr>')
+    # table row
+    rows=$(echo "$table" | grep -oP '(?<=<tr>).*?(?=</tr>)')
     for row in $rows; do
-        columns=$(echo "$row" | grep -o '<td>.*</td>')
+        # table colmn
+        columns=$(echo "$row" | grep -oP '(?<=<td>).*?(?=</td>)')
         if [[ -n "$columns" ]]; then
             first_column=$(echo "$columns" | head -n 1)
-            link=$(echo "$first_column" | grep -o '<a.*</a>')
+            # link
+            link=$(echo "$first_column" | grep -oP '(?<=href=").*?(?=")')
             if [[ -n "$link" ]]; then
-                link_text=$(echo "$link" | grep -o 'href=".*"' | cut -d '"' -f 2 | sed 's:/$::')
-                full_url=$(echo "$link" | grep -o 'href=".*"' | cut -d '"' -f 2 | sed 's:^/::')
-                result="${link_text##*/}=$full_url"
-                if [[ "$full_url" == *"#"+suid* ]]; then
-                    results+=("$result")
+                # if suit
+                if [[ "$link" == *"#suid"* ]]; then
+                    bin_name=$(basename "$link")
+                    results+=("$bin_name=$url$link")
                 fi
             fi
         fi
@@ -37,33 +40,37 @@ get_links_from_table() {
     echo "${results[@]}"
 }
 
+# GTFObins  SUID/SGID exploit binary
 scrape_bin_table() {
     url=$1
     full_url="$url#+suid"
-    soup=$(curl -s "$full_url")
+    soup=$(curl -s "$url")
     if [[ -z "$soup" ]]; then
         return
     fi
 
-    bin_table=$(echo "$soup" | grep -o '<table id="bin-table">.*</table>')
+    bin_table=$(echo "$soup" | grep -oP '(?<=<table id="bin-table">).*?(?=</table>)')
     if [[ -n "$bin_table" ]]; then
-        results=$(get_links_from_table "$full_url" "$bin_table")
+        results=$(get_links_from_table "$url" "$bin_table")
         echo "$results"
     else
-        echo "Error: Table with id 'bin-table' not found on $full_url"
+        echo "Error: Table with id 'bin-table' not found on $url"
     fi
 }
 
+#  SetUID and SetGID file controll
 find_setuid_setgid_files() {
     files=()
     while IFS= read -r -d '' file_path; do
-        if [[ -f "$file_path" && $(( $(stat -c "%a" "$file_path") & 0o6000 )) -ne 0 ]]; then
+        # SUID or SGID setting file 
+        if [[ -f "$file_path" && $(stat -c "%A" "$file_path") =~ [sS] ]]; then
             files+=("$file_path")
         fi
-    done < <(find / -type f -print0 2>/dev/null)
+    done < <(find / -type f \( -perm -4000 -o -perm -2000 \) -print0 2>/dev/null)
     echo "${files[@]}"
 }
 
+# main func
 main() {
     print_header
 
@@ -106,17 +113,17 @@ Happy Hack Day ^-^"
             else
                 echo "
 ---------------------------------------------
-There is nothing here :("
+No exploitable SUID binaries found :("
             fi
         else
             echo "
 ---------------------------------------------
-There is nothing here :("
+No SUID/SGID files found on the system."
         fi
     else
         echo "
 ---------------------------------------------
-There is nothing here :("
+Error fetching data from GTFObins."
     fi
 }
 
