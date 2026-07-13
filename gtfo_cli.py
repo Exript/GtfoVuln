@@ -12,11 +12,6 @@ import tarfile
 import urllib.request
 from pathlib import Path
 
-try:
-    import importlib.resources as ir
-except ImportError:  # pragma: no cover
-    import importlib_resources as ir  # type: ignore
-
 import yaml
 
 GTFO_BASE = "https://gtfobins.github.io/gtfobins"
@@ -24,7 +19,7 @@ TARBALL_URL = (
     "https://codeload.github.com/GTFOBins/GTFOBins.github.io/tar.gz/refs/heads/master"
 )
 
-# ANSI colors 
+# ANSI colors (auto-disabled when output is not a TTY / NO_COLOR is set)
 _TTY = sys.stdout.isatty() and os.environ.get("NO_COLOR") is None
 
 
@@ -45,10 +40,19 @@ def bin_dir() -> Path:
     return db_dir() / "_gtfobins"
 
 
+BANNER = r""" ██████╗████████╗███████╗ ██████╗        ██████╗██╗     ██╗
+██╔════╝╚══██╔══╝██╔════╝██╔═══██╗      ██╔════╝██║     ██║
+██║  ███╗  ██║   █████╗  ██║   ██║█████╗██║     ██║     ██║
+██║   ██║  ██║   ██╔══╝  ██║   ██║╚════╝██║     ██║     ██║
+╚██████╔╝  ██║   ██║     ╚██████╔╝      ╚██████╗███████╗██║
+ ╚═════╝   ╚═╝   ╚═╝      ╚═════╝        ╚═════╝╚══════╝╚═╝
+                                                           
+"""
+
+
 def banner() -> str:
-    art = ir.files("gtfo_cli").joinpath("banner.txt").read_text(encoding="utf-8")
     tagline = "                       created by Exript"
-    return c(art, "36") + c(tagline, "90") + "\n"
+    return c(BANNER, "36") + c(tagline, "90") + "\n"
 
 
 # ---------------------------------------------------------------------------

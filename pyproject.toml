@@ -14,10 +14,10 @@ keywords = ["pentest", "privesc", "gtfobins", "suid", "capabilities", "oscp"]
 dependencies = ["pyyaml>=5.1"]
 
 [project.scripts]
-gtfo-cli = "gtfo_cli.cli:main"
+gtfo-cli = "gtfo_cli:main"
 
 [project.urls]
 Homepage = "https://github.com/Exript/gtfo-cli"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/gtfo_cli"]
+only-include = ["gtfo_cli.py"]
