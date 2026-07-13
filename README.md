@@ -1,28 +1,34 @@
+# gtfo-cli
 
-# GTFoVuln
+Enumerate local **SUID/SGID** binaries and **file capabilities**, then map each one
+to its matching [GTFObins](https://gtfobins.github.io/) privilege-escalation entry.
+
+The GTFObins database is cached locally, so after one `--update` the tool runs
+fully **offline** — ideal for engagements where the target has no internet.
+
+## Install
+
+```bash
+pipx install gtfo-cli          # from PyPI
+uvx gtfo-cli                    # run without installing
 ```
-    ___________              .__        __    
-    \_   _____/__  __________|__|______/  |_  
-     |    __)_\  \/  /\_  __ \  \____ \   __\ 
-     |        \>    <  |  | \/  |  |_> >  |   
-    /_______  /__/\_ \ |__|  |__|   __/|__|   
-            \/      \/          |__|          
+
+Install straight from git:
+
+```bash
+pipx install git+https://github.com/Exript/gtfo-cli
+uvx --from git+https://github.com/Exript/gtfo-cli gtfo-cli
 ```
-
-
-GTFVuln is a simple tool that matches suid commands from the GTFobins website with local setuid and setgid files on Linux systems.
-
-
-[[GTFOBins]](https://gtfobins.github.io/)
-## Installation
-
-To run the project on your local machine, you can follow the steps below.
 
 ## Usage
 
-To use the project, you can run the following command:
- 
 ```bash
-chmod +x exrript.sh
-./exript.sh
+gtfo-cli --update              # download the offline GTFObins DB (once)
+gtfo-cli                       # scan the host and print GTFObins links
+gtfo-cli --root /              # scan from a custom root
+GTFO_DB=/tmp/db gtfo-cli       # use a portable cached DB (offline targets)
 ```
+
+Created by **Exript**.
+
+
