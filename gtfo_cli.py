@@ -19,7 +19,7 @@ TARBALL_URL = (
     "https://codeload.github.com/GTFOBins/GTFOBins.github.io/tar.gz/refs/heads/master"
 )
 
-# ANSI colors (auto-disabled when output is not a TTY / NO_COLOR is set)
+# ANSI colors
 _TTY = sys.stdout.isatty() and os.environ.get("NO_COLOR") is None
 
 
