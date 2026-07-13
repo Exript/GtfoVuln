@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gtfo-cli"
+version = "1.0.0"
+description = "Recon SUID/SGID + file capabilities on a host and map them to GTFObins privesc entries."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Exript" }]
+keywords = ["pentest", "privesc", "gtfobins", "suid", "capabilities", "oscp"]
+dependencies = ["pyyaml>=5.1"]
+
+[project.scripts]
+gtfo-cli = "gtfo_cli.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Exript/gtfo-cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gtfo_cli"]
