@@ -24,9 +24,10 @@ uvx --from git+https://github.com/Exript/gtfo-cli.git@gtfvuln gtfo-cli
 ```
 Usage
 
-bashgtfo-cli --update              # download the offline GTFObins DB (once)
+```bash
+gtfo-cli --update              # download the offline GTFObins DB (once)
 gtfo-cli                       # scan the host and print GTFObins links
 gtfo-cli --root /              # scan from a custom root
 GTFO_DB=/tmp/db gtfo-cli       # use a portable cached DB (offline targets)
-
+```
 Created by Exript.
